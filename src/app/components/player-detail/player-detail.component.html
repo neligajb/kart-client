@@ -22,7 +22,7 @@
     <h3>Recently Dropped</h3>
     <table>
       <a *ngFor="let result of results | slice:25:30"
-         (click)="onSelect(result.id)"
+         (click)="onSelect(result._id.$oid)"
          class="light-blue-hover table-row">
         <td><time>{{result.datetime | date:'MMM d, EEE'}}</time></td>
         <td>{{result.scores[0].average}}</td>
