@@ -1,0 +1,23 @@
+sudo: required
+language: javascript
+jobs:
+  include:
+    - stage: deploy to Development
+      if: branch = development OR type = pull_request
+      env:
+        - DEPLOY_ENV=dev
+        - S3_BUCKET=dev.kartskills.com
+      install: bash build/install_dependencies.sh
+      script: bash build/deploy.sh
+    - stage: deploy to Production
+      if: branch = master AND type != pull_request
+      env:
+        - DEPLOY_ENV=prod
+        - S3_BUCKET=kartskills.com
+      install: bash build/install_dependencies.sh
+      script: bash build/deploy.sh
+stages:
+  - name: deploy to Development
+    if: branch = development OR type = pull_request
+  - name: deploy to Production
+    if: branch = master AND type != pull_request
