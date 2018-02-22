@@ -24,7 +24,7 @@
       <a *ngFor="let result of results | slice:25:30"
          (click)="onSelect(result.id)"
          class="light-blue-hover table-row">
-        <td><time>{{result.date | date:'MMM d, EEE'}}</time></td>
+        <td><time>{{result.datetime | date:'MMM d, EEE'}}</time></td>
         <td>{{result.scores[0].average}}</td>
       </a>
     </table>
