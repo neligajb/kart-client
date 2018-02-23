@@ -8,6 +8,7 @@ import { Game } from '../../entities/game';
 
 import { PlayerService } from '../../services/player.service';
 import { GameService } from '../../services/game.service';
+import { PlayerNameService } from '../../services/player-name.service';
 
 @Component({
   selector: 'app-player-detail',
@@ -15,6 +16,7 @@ import { GameService } from '../../services/game.service';
   styleUrls: [ './player-detail.component.less' ],
   providers: [
     PlayerService,
+    PlayerNameService,
     GameService
   ]
 })
@@ -29,6 +31,7 @@ export class PlayerDetailComponent implements OnInit, OnChanges {
 
   constructor(
     private playerService: PlayerService,
+    private playerNameService: PlayerNameService,
     private gameService: GameService,
     @Inject(ElementRef) elementRef: ElementRef
   ) {
@@ -47,17 +50,12 @@ export class PlayerDetailComponent implements OnInit, OnChanges {
       .then(playerResults => this.results = playerResults);
   }
 
-  onSelect(gameId: string): void {
-    this.gameService.getGame(gameId)
-      .then(game => {
-        this.gameDetail = game;
-        for (const player of this.gameDetail[0].scores) {
-          this.playerService.getPlayer(player.player_id)
-            .then( playerData => player.name = (playerData.name === undefined) ? 'Computah' : playerData.name)
-            .catch(this.handleError);
-        }
-      } )
-      .catch(this.handleError);
+  onSelect(game: Game): void {
+    console.log(game);
+    this.gameDetail = game;
+    for (const player of this.gameDetail.scores) {
+      player.name = this.playerNameService.getPlayerNameFromId(player.player_id);
+    }
   }
 
   closeOverlay(): void {

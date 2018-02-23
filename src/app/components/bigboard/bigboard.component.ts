@@ -6,12 +6,16 @@ import 'rxjs/add/operator/switchMap';
 
 import { Player } from '../../entities/player';
 import { PlayerService } from '../../services/player.service';
+import { PlayerNameService } from '../../services/player-name.service';
 
 @Component({
   selector: 'app-bigboard',
   templateUrl: './bigboard.component.html',
   styleUrls: [ './bigboard.component.less' ],
-  providers: [PlayerService]
+  providers: [
+    PlayerService,
+    PlayerNameService
+  ]
 })
 
 export class BigboardComponent implements OnInit {
@@ -22,6 +26,7 @@ export class BigboardComponent implements OnInit {
 
   constructor(
     private playerService: PlayerService,
+    private playerNameService: PlayerNameService,
     private route: ActivatedRoute
   ) { }
 
@@ -29,6 +34,7 @@ export class BigboardComponent implements OnInit {
     const bb = this;
     this.playerService.getPlayers().then(function(players) {
       bb.rankings = players;
+      bb.playerNameService.buildPlayerNameDictionary(bb.rankings);
       bb.checkForSinglePlayerUrl();
     });
   }

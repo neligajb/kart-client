@@ -9,9 +9,10 @@ import { PlayerDetailComponent} from './components/player-detail/player-detail.c
 import { BigboardComponent} from './components/bigboard/bigboard.component';
 
 import { PlayerService } from './services/player.service';
+import { PlayerNameService } from './services/player-name.service';
 import { AppRoutingModule } from './app-routing.module';
 
-import { PlayerScorePipe } from './pipes/player-score.pipe'; // import our pipe here
+import { PlayerScorePipe } from './pipes/player-score.pipe';
 
 @NgModule({
   imports:      [
@@ -27,7 +28,10 @@ import { PlayerScorePipe } from './pipes/player-score.pipe'; // import our pipe 
     BigboardComponent,
     PlayerScorePipe
   ],
-  providers: [ PlayerService ],
+  providers: [
+    PlayerService,
+    PlayerNameService
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
