@@ -16,7 +16,7 @@
          (click)="onSelect(result._id.$oid)"
           class="light-blue-hover table-row">
         <td><time>{{result.datetime | date:'MMM d, EEE'}}</time></td>
-        <td>{{result.scores[0].average}}</td>
+        <td>{{result.scores | playerScore: player.id}}</td>
       </a>
     </table>
     <h3>Recently Dropped</h3>

@@ -53,7 +53,7 @@ export class PlayerDetailComponent implements OnInit, OnChanges {
         this.gameDetail = game;
         for (const player of this.gameDetail[0].scores) {
           this.playerService.getPlayer(player.player_id)
-            .then( playerData => player.name = (playerData.name === undefined) ? 'Unknown' : playerData.name)
+            .then( playerData => player.name = (playerData.name === undefined) ? 'Computah' : playerData.name)
             .catch(this.handleError);
         }
       } )
