@@ -17,8 +17,13 @@
        class="table-row light-blue-hover"
        href="/player/{{player.id}}">
       <td>{{ i + 1 }}</td>
-      <td>{{player.name}}</td>
-      <td>{{player.character}}</td>
+
+      <td *ngIf="player.name === '<Unknown>';else known_name">Computah</td>
+      <ng-template #known_name><td>{{player.name}}</td></ng-template>
+
+      <td *ngIf="player.character === '<Unknown>';else known_character">Da Computah</td>
+      <ng-template #known_character><td>{{player.character}}</td></ng-template>
+
       <td>{{player.average}}</td>
       <td><img src="{{player.image}}"></td>
     </a>
