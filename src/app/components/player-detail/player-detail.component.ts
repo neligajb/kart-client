@@ -51,7 +51,6 @@ export class PlayerDetailComponent implements OnInit, OnChanges {
   }
 
   onSelect(game: Game): void {
-    console.log(game);
     this.gameDetail = game;
     for (const player of this.gameDetail.scores) {
       player.name = this.playerNameService.getPlayerNameFromId(player.player_id);
