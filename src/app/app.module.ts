@@ -13,6 +13,8 @@ import { BigboardComponent} from './components/bigboard/bigboard.component';
 import { PlayerService } from './services/player.service';
 import { AppRoutingModule } from './app-routing.module';
 
+import { PlayerScorePipe } from './pipes/player-score.pipe'; // import our pipe here
+
 @NgModule({
   imports:      [
     BrowserModule,
@@ -26,6 +28,7 @@ import { AppRoutingModule } from './app-routing.module';
     DashboardComponent,
     PlayerDetailComponent,
     BigboardComponent,
+    PlayerScorePipe
   ],
   providers: [ PlayerService ],
   bootstrap: [ AppComponent ]
