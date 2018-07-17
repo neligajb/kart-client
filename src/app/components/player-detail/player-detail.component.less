@@ -1,7 +1,23 @@
 @import '../../../variables';
 
+:host {
+    & > div {
+        margin-bottom: 30px;
+    }
+
+    @media @mobile {
+        .wrapper {
+            background: rgba(52, 73, 94, 1);
+        }
+    }
+}
+
 h2 {
-  text-align: center ;
+  text-align: center;
+
+  @media @mobile {
+      display: none;
+  }
 }
 
 .wrapper {
@@ -75,6 +91,10 @@ h2 {
     width: 50%;
     background: @tealGreen;
     padding: 15px 0;
+
+    @media @mobile {
+        width: 80%;
+    }
 
     h3, h4 {
       margin-bottom: 0;
