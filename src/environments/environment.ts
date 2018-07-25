@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  WEB_API_ENDPOINT: 'https://35bd5l22pd.execute-api.us-east-1.amazonaws.com/dev/api'
+  WEB_API_ENDPOINT: 'https://uyiwu581de.execute-api.us-east-1.amazonaws.com/dev/api'
 };
